@@ -1,7 +1,7 @@
 ASM=nasm
 LINKER=ld
 
-all: triangle.o
+triangle: triangle.o
 	$(LINKER) $< -o triangle
 
 %.o : %.asm
@@ -9,4 +9,7 @@ all: triangle.o
 
 clean:
 	rm -rf *.o triangle
+
+debug: triangle
+	gdb -x gdb_commands.txt -args triangle 15
 
